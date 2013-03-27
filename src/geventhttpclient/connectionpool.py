@@ -1,4 +1,5 @@
 import os
+import random
 import gevent.queue
 import gevent.ssl
 import gevent.socket
@@ -52,6 +53,7 @@ class ConnectionPool(object):
                 family, 0, gevent.socket.SOL_TCP) #@UndefinedVariable
 
         # family, socktype, proto, canonname, sockaddr = info[0]
+        random.shuffle(info)
         return info
 
     def close(self):
